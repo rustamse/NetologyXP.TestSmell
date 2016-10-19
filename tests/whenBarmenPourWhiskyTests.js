@@ -9,14 +9,11 @@ import username from 'username'
 
 suite('when barmen pour whisky', function () {
     setup(function (done) {
-        this.timeout(20000);
         sober();
-        download('http://www.rosa-obs.com/images/ccd/M31_karel_full.jpg', 'mycar.jpg', function () {
-            var car = getMyCar("mycar.jpg");
-            goToBar(car);
-            freeBarmen();
-            done();
-        });
+        var car = getMyCar();
+        goToBar(car);
+        freeBarmen();
+        done();
     });
 
     suite('i ask 50 grams', function () {
