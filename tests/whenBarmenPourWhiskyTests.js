@@ -1,9 +1,9 @@
 import assert from 'assert'
-import { pour, free as freeBarmen } from '../src/barmen'
-import { drink, sober, goToBar, getMyCar, getTotallyDrunked, isDrunked } from '../src/me'
-import { download } from '../src/imageDownloader'
+import {pour, free as freeBarmen} from '../src/barmen'
+import {drink, sober, goToBar, getMyCar, getTotallyDrunked, isDrunked} from '../src/me'
+import {download} from '../src/imageDownloader'
 import fs from 'fs'
-import { expect } from 'chai'
+import {expect} from 'chai'
 import username from 'username'
 
 
@@ -11,7 +11,7 @@ suite('when barmen pour whisky', function () {
     setup(function (done) {
         this.timeout(20000);
         sober();
-        download('http://www.rosa-obs.com/images/ccd/M31_karel_full.jpg', 'mycar.jpg', function() {
+        download('http://www.rosa-obs.com/images/ccd/M31_karel_full.jpg', 'mycar.jpg', function () {
             var car = getMyCar("mycar.jpg");
             goToBar(car);
             freeBarmen();
@@ -57,8 +57,8 @@ suite('when barmen pour whisky', function () {
 
     });
 
-    suite('i ask 500 grams', function() {
-        test('Barmen said there is no such glass', function(done) {
+    suite('i ask 500 grams', function () {
+        test('Barmen said there is no such glass', function (done) {
 
             username().then(un => {
                 console.log(un);
@@ -73,6 +73,6 @@ suite('when barmen pour whisky', function () {
         })
     });
 
-    teardown(function() {
+    teardown(function () {
     })
 });
