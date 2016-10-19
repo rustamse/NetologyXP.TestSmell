@@ -18,37 +18,25 @@ suite('when barmen pour whisky', function () {
 
     suite('i ask 50 grams', function () {
         test('I get and drink whisky', function (done) {
-            fs.readFile('whisky.jpg', function (err, whisky) {
-                if (err) {
-                    throw err;
-                }
+            var iAskVolume = 50;
 
-                var iAskVolume = 50;
+            var volumeInGlass = pour(whisky, iAskVolume);
+            drink(volumeInGlass);
 
-                var volumeInGlass = pour(whisky, iAskVolume);
-                drink(volumeInGlass);
+            assert.equal(iAskVolume, volumeInGlass);
+            assert.equal(false, isDrunked());
+            assert.equal(50, getTotallyDrunked());
 
-                assert.equal(iAskVolume, volumeInGlass);
-                assert.equal(false, isDrunked());
-                assert.equal(50, getTotallyDrunked());
-
-                done();
-            });
+            done();
         });
     });
 
     suite('i ask -10 grams', function () {
         test('I get an error', function (done) {
-            fs.readFile('whisky.jpg', function (err, whisky) {
-                if (err) {
-                    throw err;
-                }
+            var iAskVolume = -10;
 
-                var iAskVolume = -10;
-
-                expect(() => pour(whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
-                done();
-            });
+            expect(() => pour(whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
+            done();
         });
 
 
