@@ -13,6 +13,7 @@ suite('when barmen pour whisky', function () {
         var car = getMyCar();
         goToBar(car);
         freeBarmen();
+        this.whisky = "Jack Daniels";
         done();
     });
 
@@ -20,7 +21,7 @@ suite('when barmen pour whisky', function () {
         test('I get and drink whisky', function (done) {
             var iAskVolume = 50;
 
-            var volumeInGlass = pour(whisky, iAskVolume);
+            var volumeInGlass = pour(this.whisky, iAskVolume);
             drink(volumeInGlass);
 
             assert.equal(iAskVolume, volumeInGlass);
@@ -35,7 +36,7 @@ suite('when barmen pour whisky', function () {
         test('I get an error', function (done) {
             var iAskVolume = -10;
 
-            expect(() => pour(whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
+            expect(() => pour(this.whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
             done();
         });
 
