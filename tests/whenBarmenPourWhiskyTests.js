@@ -7,7 +7,7 @@ import {expect} from 'chai'
 import username from 'username'
 
 
-suite('when barmen pour whisky', function () {
+suite('bar tests', function () {
     setup(function (done) {
         sober();
         var car = getMyCar();
@@ -17,50 +17,58 @@ suite('when barmen pour whisky', function () {
         done();
     });
 
-    suite('i ask 50 grams', function () {
-        test('I get whisky', function (done) {
-            var iAskVolume = 50;
+    suite('when barmen pour whisky', function () {
 
-            var volumeInGlass = pour(this.whisky, iAskVolume);
+        suite('i ask 50 grams', function () {
+            test('I get whisky', function (done) {
+                var iAskVolume = 50;
 
-            assert.equal(iAskVolume, volumeInGlass);
+                var volumeInGlass = pour(this.whisky, iAskVolume);
 
-            done();
+                assert.equal(iAskVolume, volumeInGlass);
+
+                done();
+            });
         });
 
-        test('I drink whisky', function (done) {
-            var volumeInGlass = 50;
+        suite('i ask -10 grams', function () {
+            test('I get an error', function (done) {
+                var iAskVolume = -10;
 
-            drink(volumeInGlass);
+                expect(() => pour(this.whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
+                done();
+            });
 
-            assert.equal(false, isDrunked());
-            assert.equal(50, getTotallyDrunked());
 
-            done();
+        });
+
+        suite('i ask more than 200 grams', function () {
+            test('Barmen said there is no such glass', function (done) {
+                var iAskVolume = 500;
+                var whisky = 1;
+
+                expect(() => pour(whisky, iAskVolume)).to.throw(/There is no such glass/);
+                done();
+            })
         });
     });
 
-    suite('i ask -10 grams', function () {
-        test('I get an error', function (done) {
-            var iAskVolume = -10;
+    suite('when I drink whisky', function () {
+        suite('I drink 50 grams', function () {
+            test('I drink whisky', function (done) {
+                var volumeInGlass = 50;
 
-            expect(() => pour(this.whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
-            done();
+                drink(volumeInGlass);
+
+                assert.equal(false, isDrunked());
+                assert.equal(50, getTotallyDrunked());
+
+                done();
+            });
         });
-
-
-    });
-
-    suite('i ask more than 200 grams', function () {
-        test('Barmen said there is no such glass', function (done) {
-            var iAskVolume = 500;
-            var whisky = 1;
-
-            expect(() => pour(whisky, iAskVolume)).to.throw(/There is no such glass/);
-            done();
-        })
     });
 
     teardown(function () {
     })
-});
+})
+;
