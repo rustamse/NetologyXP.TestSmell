@@ -18,13 +18,21 @@ suite('when barmen pour whisky', function () {
     });
 
     suite('i ask 50 grams', function () {
-        test('I get and drink whisky', function (done) {
+        test('I get whisky', function (done) {
             var iAskVolume = 50;
 
             var volumeInGlass = pour(this.whisky, iAskVolume);
-            drink(volumeInGlass);
 
             assert.equal(iAskVolume, volumeInGlass);
+
+            done();
+        });
+
+        test('I drink whisky', function (done) {
+            var volumeInGlass = 50;
+
+            drink(volumeInGlass);
+
             assert.equal(false, isDrunked());
             assert.equal(50, getTotallyDrunked());
 
