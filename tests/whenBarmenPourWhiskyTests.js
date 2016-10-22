@@ -88,6 +88,18 @@ suite('bar tests', function () {
                 done();
             });
         });
+
+        suite('I drink more than 150 grams', function () {
+            test('I am drunked', function (done) {
+                var volumeInGlass = 200;
+
+                drink(volumeInGlass);
+
+                assert.equal(true, isDrunked());
+
+                done();
+            });
+        });
     });
 
     teardown(function () {
