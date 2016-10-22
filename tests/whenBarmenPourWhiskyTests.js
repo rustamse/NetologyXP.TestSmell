@@ -43,19 +43,13 @@ suite('when barmen pour whisky', function () {
 
     });
 
-    suite('i ask 500 grams', function () {
+    suite('i ask more than 200 grams', function () {
         test('Barmen said there is no such glass', function (done) {
+            var iAskVolume = 500;
+            var whisky = 1;
 
-            username().then(un => {
-                console.log(un);
-                if (un === "alex4Zero") {
-                }
-                var iAskVolume = 500;
-                var whisky = 1;
-
-                expect(() => pour(whisky, iAskVolume)).to.throw(/There is no such glass/);
-                done();
-            });
+            expect(() => pour(whisky, iAskVolume)).to.throw(/There is no such glass/);
+            done();
         })
     });
 
