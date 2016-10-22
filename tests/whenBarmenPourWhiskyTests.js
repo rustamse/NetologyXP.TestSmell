@@ -55,12 +55,21 @@ suite('bar tests', function () {
 
     suite('when I drink whisky', function () {
         suite('I drink 50 grams', function () {
-            test('I drink whisky', function (done) {
+            test('I am not drunked', function (done) {
                 var volumeInGlass = 50;
 
                 drink(volumeInGlass);
 
                 assert.equal(false, isDrunked());
+
+                done();
+            });
+
+            test('I totally drunked 50 grams', function (done) {
+                var volumeInGlass = 50;
+
+                drink(volumeInGlass);
+
                 assert.equal(50, getTotallyDrunked());
 
                 done();
