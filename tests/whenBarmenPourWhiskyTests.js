@@ -8,6 +8,7 @@ import username from 'username'
 
 
 suite('bar tests', function () {
+
     setup(function (done) {
         sober();
         var car = getMyCar();
@@ -38,8 +39,6 @@ suite('bar tests', function () {
                 expect(() => pour(this.whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
                 done();
             });
-
-
         });
 
         suite('i ask more than 200 grams', function () {
@@ -54,6 +53,7 @@ suite('bar tests', function () {
     });
 
     suite('when I drink whisky', function () {
+
         suite('I drink 50 grams', function () {
             test('I am not drunked', function (done) {
                 var volumeInGlass = 50;
@@ -75,9 +75,21 @@ suite('bar tests', function () {
                 done();
             });
         });
+
+        suite('I drink 2 times by 50 grams', function () {
+            test('I totally drunked 100 grams', function (done) {
+                var volumeInGlass = 50;
+
+                drink(volumeInGlass);
+                drink(volumeInGlass);
+
+                assert.equal(50 + 50, getTotallyDrunked());
+
+                done();
+            });
+        });
     });
 
     teardown(function () {
     })
-})
-;
+});
