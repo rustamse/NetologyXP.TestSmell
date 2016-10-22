@@ -37,6 +37,7 @@ suite('bar tests', function () {
                 var iAskVolume = -10;
 
                 expect(() => pour(this.whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
+
                 done();
             });
         });
@@ -47,6 +48,7 @@ suite('bar tests', function () {
                 var whisky = 1;
 
                 expect(() => pour(whisky, iAskVolume)).to.throw(/There is no such glass/);
+
                 done();
             })
         });
@@ -55,8 +57,10 @@ suite('bar tests', function () {
     suite('when I drink whisky', function () {
 
         suite('I drink 50 grams', function () {
+
+            var volumeInGlass = 50;
+
             test('I am not drunked', function (done) {
-                var volumeInGlass = 50;
 
                 drink(volumeInGlass);
 
@@ -66,7 +70,6 @@ suite('bar tests', function () {
             });
 
             test('I totally drunked 50 grams', function (done) {
-                var volumeInGlass = 50;
 
                 drink(volumeInGlass);
 
