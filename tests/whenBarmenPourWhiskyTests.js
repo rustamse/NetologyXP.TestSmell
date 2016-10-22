@@ -33,7 +33,7 @@ suite('bar tests', function () {
         });
 
         suite('i ask non positive grams', function () {
-            test('Barmen asked that volume of whisky is invalid', function (done) {
+            test('Barmen said that volume of whisky is invalid', function (done) {
                 var iAskVolume = -10;
 
                 expect(() => pour(this.whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
