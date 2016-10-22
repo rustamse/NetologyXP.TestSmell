@@ -21,7 +21,7 @@ suite('bar tests', function () {
     suite('when barmen pour whisky', function () {
 
         suite('i ask 50 grams', function () {
-            test('I get whisky', function (done) {
+            test('I get 50 grams of whisky', function (done) {
                 var iAskVolume = 50;
 
                 var volumeInGlass = pour(this.whisky, iAskVolume);
