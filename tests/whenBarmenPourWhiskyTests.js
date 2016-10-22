@@ -69,6 +69,15 @@ suite('bar tests', function () {
                 done();
             });
 
+            test('I drunked 50 grams', function (done) {
+
+                var volumeDrunked = drink(volumeInGlass);
+
+                assert.equal(50, volumeDrunked);
+
+                done();
+            });
+
             test('I totally drunked 50 grams', function (done) {
 
                 drink(volumeInGlass);
